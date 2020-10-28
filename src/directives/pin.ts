@@ -11,7 +11,7 @@
 // }
 
 const pin = (el: HTMLInputElement, binding: any) => {
-  console.log(binding);
+  // console.log(binding);
   
   el.style.position = "fixed";
   const s = binding.arg || "top";
