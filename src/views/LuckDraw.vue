@@ -1,86 +1,74 @@
 <template>
-  <div class="luckdraw-content">
-    <!-- 滚动号码 -->
-    <div class="luckdraw-scroll">
-      <ul class="bg-scroll">
-        <li
-          v-for="(item, i) in list"
-          :key="i"
-          :class="{ anim: animate && i == 0 }"
-        >
-          <span class="lkq-name">{{ item.phone }}</span>
-        </li>
-      </ul>
-    </div>
-    <!-- 抽奖弹窗 -->
-    <div class="turntable">
-      <svg
-        class="bulb svelte-ecndpu"
-        viewBox="-6 -6 316 316"
-        fill="currentColor"
-        fill-rule="evenodd"
-      >
-        <g class="bulb-1 svelte-ecndpu">
-          <circle cx="10" cy="10" r="4" />
-          <circle cx="78" cy="4" r="4" />
-          <circle cx="152" cy="4" r="4" />
-          <circle cx="226" cy="4" r="4" />
-          <circle cx="294" cy="10" r="4" />
-          <circle cx="4" cy="89" r="4" />
-          <circle cx="4" cy="173" r="4" />
-          <circle cx="4" cy="258" r="4" />
-          <circle cx="41" cy="300" r="4" />
-          <circle cx="115" cy="300" r="4" />
-          <circle cx="189" cy="300" r="4" />
-          <circle cx="263" cy="300" r="4" />
-          <circle cx="300" cy="258" r="4" />
-          <circle cx="300" cy="173" r="4" />
-          <circle cx="300" cy="89" r="4" />
-        </g>
-        <g class="bulb-2 svelte-ecndpu">
-          <circle cx="41" cy="4" r="4" />
-          <circle cx="115" cy="4" r="4" />
-          <circle cx="189" cy="4" r="4" />
-          <circle cx="263" cy="4" r="4" />
-          <circle cx="4" cy="46" r="4" />
-          <circle cx="4" cy="131" r="4" />
-          <circle cx="4" cy="215" r="4" />
-          <circle cx="10" cy="294" r="4" />
-          <circle cx="294" cy="294" r="4" />
-          <circle cx="300" cy="215" r="4" />
-          <circle cx="300" cy="131" r="4" />
-          <circle cx="300" cy="46" r="4" />
-          <circle cx="78" cy="300" r="4" />
-          <circle cx="152" cy="300" r="4" />
-          <circle cx="226" cy="300" r="4" />
-        </g>
-      </svg>
-      <ul class="awards-list">
-        <li
-          v-for="(item, key) in awardList"
-          :key="item.id"
-          class="awards-item"
-          :class="{
+<div class="luckdraw-content">
+  <!-- 滚动号码 -->
+  <div class="luckdraw-scroll">
+    <ul class="bg-scroll">
+      <li v-for="(item, i) in list" :key="i" :class="{ anim: animate && i == 0 }">
+        <span class="lkq-name">{{ item.phone }}</span>
+      </li>
+    </ul>
+  </div>
+  <!-- 抽奖弹窗 -->
+  <div class="turntable">
+    <svg class="bulb svelte-ecndpu" viewBox="-6 -6 316 316" fill="currentColor" fill-rule="evenodd">
+      <g class="bulb-1 svelte-ecndpu">
+        <circle cx="10" cy="10" r="4" />
+        <circle cx="78" cy="4" r="4" />
+        <circle cx="152" cy="4" r="4" />
+        <circle cx="226" cy="4" r="4" />
+        <circle cx="294" cy="10" r="4" />
+        <circle cx="4" cy="89" r="4" />
+        <circle cx="4" cy="173" r="4" />
+        <circle cx="4" cy="258" r="4" />
+        <circle cx="41" cy="300" r="4" />
+        <circle cx="115" cy="300" r="4" />
+        <circle cx="189" cy="300" r="4" />
+        <circle cx="263" cy="300" r="4" />
+        <circle cx="300" cy="258" r="4" />
+        <circle cx="300" cy="173" r="4" />
+        <circle cx="300" cy="89" r="4" />
+      </g>
+      <g class="bulb-2 svelte-ecndpu">
+        <circle cx="41" cy="4" r="4" />
+        <circle cx="115" cy="4" r="4" />
+        <circle cx="189" cy="4" r="4" />
+        <circle cx="263" cy="4" r="4" />
+        <circle cx="4" cy="46" r="4" />
+        <circle cx="4" cy="131" r="4" />
+        <circle cx="4" cy="215" r="4" />
+        <circle cx="10" cy="294" r="4" />
+        <circle cx="294" cy="294" r="4" />
+        <circle cx="300" cy="215" r="4" />
+        <circle cx="300" cy="131" r="4" />
+        <circle cx="300" cy="46" r="4" />
+        <circle cx="78" cy="300" r="4" />
+        <circle cx="152" cy="300" r="4" />
+        <circle cx="226" cy="300" r="4" />
+      </g>
+    </svg>
+    <ul class="awards-list">
+      <li v-for="(item, key) in awardList" :key="item.id" class="awards-item" :class="{
             'awards-item-draw': key === 4,
             'run-item': item.runId === current,
-          }"
-        >
-          <div
-            v-if="key === 4"
-            @click="handleStart"
-            class="draw-btn svelte-ecndpu"
-          >
-            <span class="draw-btn-text">点击抽奖</span>
-          </div>
-          <div v-else>{{ item.name }}</div>
-        </li>
-      </ul>
-    </div>
+          }">
+        <div v-if="key === 4" @click="handleStart" class="draw-btn svelte-ecndpu">
+          <span class="draw-btn-text">点击抽奖</span>
+        </div>
+        <div v-else>{{ item.name }}</div>
+      </li>
+    </ul>
   </div>
+</div>
 </template>
 
 <script lang="ts">
-import { ref, reactive, computed, onMounted, nextTick } from "vue";
+import {
+  ref,
+  reactive,
+  computed,
+  onMounted,
+  nextTick
+} from "vue";
 
 interface AwardTypes {
   id: number;
@@ -159,8 +147,10 @@ export default {
         },
       ]),
       awardList = computed(() => {
-        const newArr: {}[] = JSON.parse(JSON.stringify(awards));
-        newArr.splice(4, 0, { name: "DrawBtn" });
+        const newArr: {} [] = JSON.parse(JSON.stringify(awards));
+        newArr.splice(4, 0, {
+          name: "DrawBtn"
+        });
         return newArr;
       });
 
@@ -284,7 +274,7 @@ export default {
 
     .anim {
       transition: all 0.5s linear;
-      margin-top: -0.74rem;
+      margin-top: -1rem;
     }
   }
 
@@ -373,15 +363,15 @@ export default {
 
 @keyframes bulb-animation {
   0% {
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
   50% {
-    color: #FFE37F;
+    color: #ffe37f;
   }
 
   100% {
-    color: #FFFFFF;
+    color: #ffffff;
   }
 }
 

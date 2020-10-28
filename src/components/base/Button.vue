@@ -1,25 +1,25 @@
 <template>
   <button class="nanoui-button">
-  <slot>按钮</slot>
+    <slot>按钮</slot>
   </button>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name:"NanoUIButton"
-})
+  name: "NanoUIButton",
+});
 </script>
  
  <style lang="less" scoped>
- .nanoui-button {
+.nanoui-button {
   border: none;
   outline: 0;
   padding: 8px 12px;
   border-radius: 5px;
-  color: #FFF;
-  background-color: #409EFF;
+  color: #fff;
+  background-color: #409eff;
   display: inline-block;
   line-height: 1;
   white-space: nowrap;
@@ -28,8 +28,8 @@ export default defineComponent({
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
-  -webkit-transition: .1s;
-  transition: .1s;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
   font-weight: 500;
 }
- </style>
+</style>

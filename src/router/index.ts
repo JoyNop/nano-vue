@@ -17,11 +17,12 @@ const routes: Array<RouteRecordRaw> = [
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
 
-  // {
-  //   path: '/todoList',
-  //   name: 'TodoList',
-  //   component: () => import(/* webpackChunkName: "todo" */ '@/views/TodoList.vue')
-  // },
+  {
+    path: "/todoList",
+    name: "TodoList",
+    component: () =>
+      import(/* webpackChunkName: "todo" */ "@/views/TodoList.vue"),
+  },
   {
     path: "/luckdraw",
     name: "LuckDraw",
