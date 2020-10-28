@@ -1,30 +1,37 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="wrapper">
+    <transition name="nano-fade">
+      <router-view />
+    </transition>
+    <Tabbar route placeholder v-show="showFooter">
+     
+      <TabbarItem replace to="/" icon="home-o">Home </TabbarItem>
+      <TabbarItem replace to="/about" icon="search">About </TabbarItem>
+      <TabbarItem replace to="/todoList" icon="friends-o">Todo </TabbarItem>
+      <TabbarItem replace to="/luckdraw" icon="setting-o">LuckDraw </TabbarItem>
+    </Tabbar>
+    <input />
   </div>
-  <router-view/>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+ 
+ <script lang="ts">
+import { defineComponent } from "vue";
 
-#nav {
-  padding: 30px;
+import { Tabbar, TabbarItem } from "vant";
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+export default defineComponent({
+  name: "App",
+  components: {
+    Tabbar,
+    TabbarItem,
+  },
+  computed: {
+    showFooter() {
+      console.log(this.$route.path.split("/").length < 3);
+      
+      return this.$route.path.split("/").length < 3;
+    },
+  },
+});
+</script>
