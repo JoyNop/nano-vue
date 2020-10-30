@@ -29,21 +29,28 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "luckdraw" */ "@/views/LuckDraw.vue"),
   },
-  // {
-  //   path: '/address/list',
-  //   name: 'Address',
-  //   component: () => import(/* webpackChunkName: "address" */ '@/views/address/AddressList')
-  // },
-  // {
-  //   path: '/address/edit',
-  //   name: 'AddressEdit',
-  //   component: () => import(/* webpackChunkName: "address" */ '@/views/address/AddressEdit')
-  // },
+  {
+    path: "/address/list",
+    name: "Address",
+    component: () =>
+      import(/* webpackChunkName: "address" */ "@/views/address/AddressList"),
+  },
+  {
+    path: "/address/edit",
+    name: "AddressEdit",
+    component: () =>
+      import(/* webpackChunkName: "address" */ "@/views/address/AddressEdit"),
+  },
   // {
   //   path: '/chat/list',
   //   name: 'Chat',
   //   component: () => import(/* webpackChunkName: "chatpage" */ '@/views/chat')
   // }
+  {
+    path:"/demo",
+    name:"Demo",
+    component: import(/* webpackChunkName: "demo" */ "@/views/Demo.vue"),
+  }
 ];
 
 const router = createRouter({
