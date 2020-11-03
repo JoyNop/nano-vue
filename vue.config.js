@@ -1,6 +1,6 @@
 // vue.config.js
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/nano-vue/" : "./",
+  // publicPath: process.env.NODE_ENV === "production" ? "/nano-vue/" : "./",
   outputDir: "docs",
   css: {
     loaderOptions: {
