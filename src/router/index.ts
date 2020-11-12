@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -41,20 +41,25 @@ const routes: Array<RouteRecordRaw> = [
     component: () =>
       import(/* webpackChunkName: "address" */ "@/views/address/AddressEdit"),
   },
-  // {
-  //   path: '/chat/list',
-  //   name: 'Chat',
-  //   component: () => import(/* webpackChunkName: "chatpage" */ '@/views/chat')
-  // }
   {
-    path:"/demo",
-    name:"Demo",
+    path: "/chat/list",
+    name: "Chat",
+    component: () => import(/* webpackChunkName: "chatpage" */ "@/views/chat"),
+  },
+  {
+    path: "/demo",
+    name: "Demo",
     component: import(/* webpackChunkName: "demo" */ "@/views/Demo.vue"),
-  }
+  },
+  {
+    path: "/vuex",
+    name: "Vuex",
+    component: import(/* webpackChunkName: "Vuex" */ "@/views/Vuex.vue"),
+  },
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(process.env.BASE_URL),
+  history: createWebHistory(process.env.BASE_URL),
   routes,
 });
 
